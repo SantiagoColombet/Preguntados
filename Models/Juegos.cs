@@ -28,5 +28,15 @@ public class Juegos
         Juegos.preguntas = BD.ObtenerPreguntas(dificultad, categoria);
         Juegos.respuestas = BD.ObtenerRespuestas(preguntas);    
     }
-
+    public static Pregunta ObtenerProximaPregunta()
+    {
+        Pregunta pregunta = null;
+        if(preguntas != null)
+        {
+            Random rnd = new Random();
+            int randIndex = rnd.Next(0, preguntas.Count());
+            pregunta = preguntas[randIndex];
+        }
+        return pregunta;
+    }
 }
