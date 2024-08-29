@@ -39,4 +39,17 @@ public class Juegos
         }
         return pregunta;
     }
+
+    public static List<Respuestas> ObtenerProximasRespuestas(int idPregunta)
+    {
+        List<Respuestas> listaRespuesta = new List<Respuestas>();
+        foreach(Respuestas _respuesta in respuestas)
+        {
+            if(_respuesta.IdPregunta == idPregunta)
+            {   
+                listaRespuesta.Add(_respuesta);
+            }
+        }
+        return listaRespuesta;
+    }
 }

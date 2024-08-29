@@ -54,18 +54,18 @@ public class BD
         }
         return _ListadoPreguntas;
     }
-
-
-    // Esto revisemoslo todo el grupo juntos, porque si bien esta en la receta, cionviene hacerlo de otra forma
-    public static List<Respuestas> ObtenerRespuestas(List<Pregunta> preguntas)
+    public static List<Respuestas> ObtenerRespuestas(List<Pregunta> ListaPreguntas)
     {
-        //Mal
-        // Preguntas es una lista.. lo estas queriendo llevar 
-        using(SqlConnection db = new SqlConnection(_connectionString))
+        List<Respuestas> listaRespuesta = new List<Respuestas>();
+        using (SqlConnection db = new SqlConnection(_connectionString))
         {
-            string sql = "SELECT * FROM Respuestas INNER JOIN Preguntas on Respuestas.IdPregunta = Preguntas.IdPregunta WHERE Preguntas.Enunciado = preguntas";
-            _ListadoRespuestas = db.Query<Respuestas>(sql, new {preguntas = preguntas}).ToList();
+            foreach(Pregunta pregunta in ListaPreguntas)
+            {
+                string sql = "SELECT * FROM Respuestas WHERE IdPregunta = @pIdPregunta";
+                listaRespuesta = db.Query<Respuestas>(sql, new { pIdPregunta = pregunta.IdPregunta }).ToList();
+                _ListadoRespuestas.AddRange(listaRespuesta);
+            }
         }
-        return _ListadoRespuestas;    
+        return _ListadoRespuestas;
     }
 }
