@@ -52,7 +52,7 @@ public class Juegos
         }
         return listaRespuesta;
     }
-    public bool VerificarRespuesta(int idPregunta, int idRespuesta)
+    public static bool VerificarRespuesta(int idPregunta, int idRespuesta)
     {
         bool esCorrecta = false;
         preguntas.RemoveAt(idPregunta);
