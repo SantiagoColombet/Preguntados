@@ -40,7 +40,7 @@ public class Juegos
         return pregunta;
     }
 
-    public static List<Respuestas> ObtenerProximasRespuestas(int idPregunta)
+    public static List<Respuestas> ObtenerRespuestas(int idPregunta)
     {
         List<Respuestas> listaRespuesta = new List<Respuestas>();
         foreach(Respuestas _respuesta in respuestas)
@@ -51,5 +51,17 @@ public class Juegos
             }
         }
         return listaRespuesta;
+    }
+    public bool VerificarRespuesta(int idPregunta, int idRespuesta)
+    {
+        bool esCorrecta = false;
+        preguntas.RemoveAt(idPregunta);
+        if (idPregunta == idRespuesta)
+        {
+            esCorrecta = true;
+            puntajeActual += 100; 
+            cantidadPreguntasCorrectas++;
+        }
+        return esCorrecta;
     }
 }
