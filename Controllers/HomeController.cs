@@ -32,9 +32,41 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
     {
-    ViewBag.respuestaCorrecta = Juegos.ObtenerRespuestas( idPregunta);
-    ViewBag.esCorrecta = Juegos.VerificarRespuesta(idPregunta, idRespuesta);
-    return View("Respuesta");
+        ViewBag.respuestaCorrecta = Juegos.ObtenerProximasRespuestas(idPregunta);
+        ViewBag.esCorrecta = Juegos.VerificarRespuesta(idPregunta, idRespuesta);
+
+        return View("Respuesta");
+            
+    }
+
+    public IActionResult Comenzar(string username, int dificultad, int categoria)
+    {
+        Juegos.CargarPartida(username, dificultad, categoria);
+
+        if (Juegos.preguntas != null)
+        {
+            return RedirectToAction("Jugar");
+        }
+        else
+        {
+            return RedirectToAction("ConfigurarJuego");
+        }
+    }
+    public IActionResult Jugar()
+    {
+        Pregunta proximaPregunta = Juegos.ObtenerProximaPregunta();
+
+        if (proximaPregunta == null)
+        {
+            return View("Fin");
+        }
+        else
+        {
+            ViewBag.PreguntaActual = proximaPregunta;
+            ViewBag.RespuestasActuales = Juegos.ObtenerProximasRespuestas(proximaPregunta.IdPregunta);
+
+            return View("Juego");
+        }
     }
     public IActionResult Privacy()
     {
