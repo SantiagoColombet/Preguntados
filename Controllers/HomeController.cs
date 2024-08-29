@@ -18,6 +18,30 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult ConfigurarJuego()
+    {
+        Juegos.InicializarJuego();
+
+        ViewBag.Categorias = Juegos.ObtenerCategorias();
+        ViewBag.Dificultades = Juegos.ObtenerDificultades();
+
+        return View("ConfigurarJuego");
+    }
+
+
+    [HttpPost]
+    public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
+    {
+    bool esCorrecta = Juegos.VerificarRespuesta(idPregunta, idRespuesta);
+
+    var respuestaCorrecta = Juegos.ObtenerProximasRespuestas(int idPregunta);
+
+    ViewBag.EsCorrecta = esCorrecta;
+    ViewBag.RespuestaCorrecta = respuestaCorrecta;
+
+    return View("Respuesta");
+        
+    }
     public IActionResult Privacy()
     {
         return View();
