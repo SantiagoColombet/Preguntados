@@ -32,15 +32,25 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
     {
-    bool esCorrecta = Juegos.VerificarRespuesta(idPregunta, idRespuesta);
+        ViewBag.respuestaCorrecta = Juegos.ObtenerRespuestas(idPregunta);
+        ViewBag.esCorrecta = Juegos.VerificarRespuesta(idPregunta, idRespuesta);
 
-    var respuestaCorrecta = Juegos.ObtenerProximasRespuestas(int idPregunta);
+        return View("Respuesta");
+            
+    }
 
-    ViewBag.EsCorrecta = esCorrecta;
-    ViewBag.RespuestaCorrecta = respuestaCorrecta;
+    public IActionResult Comenzar(string username, int dificultad, int categoria)
+    {
+        Juegos.CargarPartida(username, dificultad, categoria);
 
-    return View("Respuesta");
-        
+        if (Juegos.preguntas != null)
+        {
+            return RedirectToAction("Jugar");
+        }
+        else
+        {
+            return RedirectToAction("ConfigurarJuego");
+        }
     }
     public IActionResult Privacy()
     {

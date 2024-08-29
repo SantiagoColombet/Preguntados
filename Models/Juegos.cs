@@ -1,10 +1,10 @@
 public class Juegos
 {
-    static string username {get; set;}
-    static int puntajeActual {get; set;}
-    static int cantidadPreguntasCorrectas {get; set;}
-    static List<Pregunta> preguntas {get; set;}
-    static List<Respuestas> respuestas {get; set;}
+    static public string username {get; set;}
+    static public int puntajeActual {get; set;}
+    static public int cantidadPreguntasCorrectas {get; set;}
+    static public List<Pregunta> preguntas {get; set;}
+    static public List<Respuestas> respuestas {get; set;}
 
 
     public static void InicializarJuego()
@@ -52,7 +52,7 @@ public class Juegos
         }
         return listaRespuesta;
     }
-    public bool VerificarRespuesta(int idPregunta, int idRespuesta)
+    public static bool VerificarRespuesta(int idPregunta, int idRespuesta)
     {
         bool esCorrecta = false;
         preguntas.RemoveAt(idPregunta);
