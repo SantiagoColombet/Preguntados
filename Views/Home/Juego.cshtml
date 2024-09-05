@@ -1,0 +1,105 @@
+@{
+    var pregunta = ViewBag.PreguntaActual;
+    var respuestas = ViewBag.RespuestasActuales;
+    string username = Juegos.username;
+    int puntaje = Juegos.puntajeActual;
+}
+
+<div class="juego-container">
+    <!-- Nombre de usuario y puntaje actual -->
+    <div class="info-usuario">
+        <p>Nombre de usuario: @username</p>
+        <p>Puntaje actual: @puntaje</p>
+    </div>
+
+    <!-- Número de pregunta y enunciado -->
+    <div class="pregunta-enunciado">
+        <h2>Pregunta:</h2>
+        <p>@pregunta.Enunciado</p>
+        @if (!string.IsNullOrEmpty(pregunta.Foto))
+        {
+            <img src="@pregunta.Foto" alt="Imagen de la pregunta" class="imagen-pregunta" />
+        }
+    </div>
+
+    <!-- Formulario para seleccionar la respuesta -->
+    <form asp-action="VerificarRespuesta" method="post">
+        <input type="hidden" name="idPregunta" value="@pregunta.IdPregunta" />
+        
+        <div class="respuestas-container">
+            @foreach (var respuesta in respuestas)
+            {
+                <div class="respuesta">
+                    <label>
+                        <input type="radio" name="idRespuesta" value="@respuesta.IdRespuesta" required />
+                        @respuesta.Contenido
+                        @if (!string.IsNullOrEmpty(respuesta.Foto))
+                        {
+                            <img src="@respuesta.Foto" alt="Imagen de la respuesta" class="imagen-respuesta" />
+                        }
+                    </label>
+                </div>
+            }
+        </div>
+
+        <!-- Botón para enviar el formulario -->
+        <button type="submit" class="btn-enviar">Responder</button>
+    </form>
+</div>
+
+<!-- Agrega el siguiente estilo para darle estructura al diseño -->
+<style>
+    .juego-container {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .info-usuario {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .pregunta-enunciado {
+        background-color: #f0f0f0;
+        border: 1px solid #4D7298;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .imagen-pregunta {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .respuestas-container {
+        margin-bottom: 20px;
+    }
+
+    .respuesta {
+        border: 1px solid #4D7298;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .imagen-respuesta {
+        max-width: 50px;
+        height: auto;
+        margin-left: 10px;
+    }
+
+    .btn-enviar {
+        background-color: #4D7298;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn-enviar:hover {
+        background-color: #3d5f78;
+    }
+</style>
