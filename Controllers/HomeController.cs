@@ -18,14 +18,12 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult ConfigurarJuego()
+    public void ConfigurarJuego()
     {
         Juegos.InicializarJuego();
 
         ViewBag.Categorias = Juegos.ObtenerCategorias();
         ViewBag.Dificultades = Juegos.ObtenerDificultades();
-
-        return View("ConfigurarJuego");
     }
 
 

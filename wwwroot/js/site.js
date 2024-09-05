@@ -1,4 +1,11 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const configButton = document.getElementById('configButton');
+const configMenu = document.getElementById('configMenu');
+const closeButton = document.getElementById('closeButton');
 
-// Write your JavaScript code.
+configButton.addEventListener('click', () => {
+    configMenu.style.display = 'block';
+});
+
+closeButton.addEventListener('click', () => {
+    configMenu.style.display = 'none';
+});

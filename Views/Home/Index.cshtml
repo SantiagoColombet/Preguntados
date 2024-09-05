@@ -1,8 +1,37 @@
 ﻿
-<div class="settings">
-    <button class="settings-button" onclick="window.location.href='configuraciones.html'">Configuraciones</button>
+
+
+
+<div class="area" >
+
+
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+    <div class="container">
+        <button onclick="window.location.href='jugar.html'" class="boton_index">Jugar</button>
+        <button onclick="window.location.href='jugar.html'" class="boton_index">Créditos</button>
+    </div>
 </div>
-<div class="container">
-    <button onclick="window.location.href='jugar.html'">Jugar</button>
-    <button onclick="window.location.href='creditos.html'">Créditos</button>
+<div class="settings">
+    <button Action='@Url.Action("ConfigurarJuego", "Home")' class="settings-button" id="configButton">Configuración</button>
+</div>
+<div id="configMenu">
+    <h2>Menú de Configuración</h2>
+    <ul>
+        <li><label><input type="checkbox"> Notificaciones</label></li>
+        <li><label><input type="checkbox"> Modo oscuro</label></li>
+        <li><label><input type="checkbox"> Autoguardado</label></li>
+        <li><label><input type="checkbox"> Compartir datos</label></li>
+    </ul>   
+    <button id="closeButton">Cerrar</button>
 </div>
