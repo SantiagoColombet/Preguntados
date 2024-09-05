@@ -1,8 +1,4 @@
-﻿
-
-
-
-<div class="area" >
+﻿<div class="area" >
 
 
     <ul class="circles">
@@ -18,20 +14,30 @@
             <li></li>
     </ul>
     <div class="container">
-        <button onclick="window.location.href='jugar.html'" class="boton_index">Jugar</button>
-        <button onclick="window.location.href='jugar.html'" class="boton_index">Créditos</button>
+    <a href='@Url.Action("Jugar","Home")' class="boton_index">Jugar</a>
+    <a href='@Url.Action("Jugar","Home")' class="boton_index">Creditos</a>
     </div>
 </div>
 <div class="settings">
-    <button Action='@Url.Action("ConfigurarJuego", "Home")' class="settings-button" id="configButton">Configuración</button>
+    <button href='@Url.Action("ConfigurarJuego", "Home")' class="settings-button" id="configButton">Configuración</button>
 </div>
 <div id="configMenu">
     <h2>Menú de Configuración</h2>
-    <ul>
-        <li><label><input type="checkbox"> Notificaciones</label></li>
-        <li><label><input type="checkbox"> Modo oscuro</label></li>
-        <li><label><input type="checkbox"> Autoguardado</label></li>
-        <li><label><input type="checkbox"> Compartir datos</label></li>
-    </ul>   
-    <button id="closeButton">Cerrar</button>
+    <form id="configForm">
+        <ul>
+            <li>
+                <input type="radio" id="facil" name="dificultad" value="facil">
+                <label for="facil">Fácil</label>
+            </li>
+            <li>
+                <input type="radio" id="medio" name="dificultad" value="medio">
+                <label for="medio">Medio</label>
+            </li>
+            <li>
+                <input type="radio" id="dificil" name="dificultad" value="dificil">
+                <label for="dificil">Difícil</label>
+            </li>
+        </ul>
+        <button type="submit" id="closeButton">Cerrar</button>
+    </form>
 </div>

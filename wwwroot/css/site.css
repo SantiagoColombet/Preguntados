@@ -1,3 +1,4 @@
+/*                                    INDEX                              */
 
 body {
   font-family: Arial, sans-serif;
@@ -25,7 +26,7 @@ body {
   margin: 10px;
   z-index: 10;
 }
-button {
+a {
   padding: 15px 30px;
   margin: 10px;
   font-size: 18px;
@@ -35,10 +36,15 @@ button {
   background-color: #007BFF;
   color: white;
   transition: background-color 0.3s ease;
+  list-style: none;
+  text-decoration: none;
 }
-button:hover {
+a:hover {
   background-color: #0056b3;
+  color: rgb(228, 215, 215);
 }
+/*                                    CONFIGURACION                              */
+
 .settings-button {
   position: absolute;
   top: 20px;
@@ -75,7 +81,8 @@ button:hover {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  width: 300px;
+  width: 450px;
+  height: 300px;
   max-width: 90%;
   z-index: 1000;
 }
@@ -135,4 +142,18 @@ button:hover {
 }
 #closeButton:hover {
   background-color: #d32f2f;
+}
+/*                                    FORM                              */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {  
+  display: flex;
+  margin-top: 20px;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+input[type="radio"] {
+  margin-right: 10px;
 }

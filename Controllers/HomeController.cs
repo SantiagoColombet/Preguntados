@@ -54,6 +54,7 @@ public class HomeController : Controller
     {
         Pregunta proximaPregunta = Juegos.ObtenerProximaPregunta();
 
+        return View("Juego");
         if (proximaPregunta == null)
         {
             return View("Fin");
@@ -65,6 +66,7 @@ public class HomeController : Controller
 
             return View("Juego");
         }
+        
     }
     public IActionResult Privacy()
     {

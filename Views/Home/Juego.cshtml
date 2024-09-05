@@ -1,4 +1,4 @@
-@{
+<!-- @{
     var pregunta = ViewBag.PreguntaActual;
     var respuestas = ViewBag.RespuestasActuales;
     string username = Juegos.username;
@@ -6,13 +6,11 @@
 }
 
 <div class="juego-container">
-    <!-- Nombre de usuario y puntaje actual -->
     <div class="info-usuario">
         <p>Nombre de usuario: @username</p>
         <p>Puntaje actual: @puntaje</p>
     </div>
 
-    <!-- Número de pregunta y enunciado -->
     <div class="pregunta-enunciado">
         <h2>Pregunta:</h2>
         <p>@pregunta.Enunciado</p>
@@ -22,7 +20,6 @@
         }
     </div>
 
-    <!-- Formulario para seleccionar la respuesta -->
     <form asp-action="VerificarRespuesta" method="post">
         <input type="hidden" name="idPregunta" value="@pregunta.IdPregunta" />
         
@@ -42,12 +39,10 @@
             }
         </div>
 
-        <!-- Botón para enviar el formulario -->
         <button type="submit" class="btn-enviar">Responder</button>
     </form>
 </div>
 
-<!-- Agrega el siguiente estilo para darle estructura al diseño -->
 <style>
     .juego-container {
         font-family: Arial, sans-serif;
@@ -102,4 +97,4 @@
     .btn-enviar:hover {
         background-color: #3d5f78;
     }
-</style>
+</style> -->

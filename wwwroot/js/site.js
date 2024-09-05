@@ -9,3 +9,4 @@ configButton.addEventListener('click', () => {
 closeButton.addEventListener('click', () => {
     configMenu.style.display = 'none';
 });
+
