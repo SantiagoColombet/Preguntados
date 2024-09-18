@@ -37,9 +37,9 @@ public class HomeController : Controller
             
     }
 
-    public IActionResult Comenzar(string username, int dificultad, int categoria)
+    public IActionResult Comenzar(string username, int dificultad)
     {
-        Juegos.CargarPartida(username, dificultad, categoria);
+        Juegos.CargarPartida(username, dificultad, -1);
 
         if (Juegos.preguntas != null)
         {
@@ -50,7 +50,8 @@ public class HomeController : Controller
             return RedirectToAction("ConfigurarJuego");
         }
     }
-    public IActionResult Jugar()
+
+    public IActionResult Jugar()    
     {
         Pregunta proximaPregunta = Juegos.ObtenerProximaPregunta();
 
