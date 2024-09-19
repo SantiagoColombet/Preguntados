@@ -113,6 +113,7 @@ let categoria = null; // Variable para guardar el valor del último giro
 
 events.addListener("spinEnd", (sector) => {
   categoria = sector.label; 
-
+  $("#nombrecategoria").val(categoria);
+  $("#configButton").show();
   console.log(`El valor guardado es: ${categoria}`);
 });

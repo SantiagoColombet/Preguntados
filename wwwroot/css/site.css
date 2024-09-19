@@ -366,3 +366,5 @@ input[type="radio"] {
   flex-basis: 100%;
   flex: 1;
 }
+
+#configButton {display:none}

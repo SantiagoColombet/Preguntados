@@ -14,9 +14,13 @@
             <li></li>
     </ul>
 
+                <div id="spin_the_wheel">
+            <canvas id="wheel" width="800" height="800"></canvas>
+            <div id="spin">SPIN</div>
+        </div>
     </div>
         <div class="settings">
-        <button class="settings-button" id="configButton">Configuración</button>
+        <button class="settings-button" id="configButton">Continuar</button>
     </div>
     <div id="configMenu">
         <h2>Menú de Configuración</h2>
@@ -35,13 +39,10 @@
                     <label for="dificil">Difícil</label>
                 </li>
                 <li>
-                    <input type="radio" id="todas" name="dificultad" value=3>
+                    <input type="radio" id="todas" checked name="dificultad" value=3>
                     <label for="todas">Todas</label>
                 </li>
-                <div id="spin_the_wheel">
-                    <canvas id="wheel" width="800" height="800"></canvas>
-                    <div id="spin">SPIN</div>
-                </div>
+                <input type="hidden" value="" id="nombrecategoria" name="nombrecategoria">
             </ul>
             
             <button type="submit" id="closeButton">Cerrar</button>

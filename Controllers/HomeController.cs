@@ -39,8 +39,12 @@ public class HomeController : Controller
 
 
 
-    public IActionResult Comenzar(string username, int dificultad, int categoria = -1 )
+    public IActionResult Comenzar(string username, int dificultad, string nombrecategoria)
     {
+        
+        /*con el nombrecategoria setear categoria como int */   
+        int categoria = -1;
+
         Juegos.CargarPartida(username, dificultad, -1);
 
         if (Juegos.preguntas != null && categoria == -1)
