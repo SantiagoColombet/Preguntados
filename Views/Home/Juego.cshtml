@@ -1,5 +1,5 @@
+<div class="area" >
 
-<div class="area">
 
     <ul class="circles">
             <li></li>
@@ -13,19 +13,44 @@
             <li></li>
             <li></li>
     </ul>
-    <button id="spin">Spin</button>
-    <div class="containerRuleta">
-        <div class="ruleta">
-            <div class="one">Cultura general</div>
-            <div class="two">Geografia</div>
-            <div class="three">Deportes</div>
-            <div class="four">Argentina</div>
-            <div class="five">Tecnologia</div>
-            <div class="six">Ciencia</div>
-        </div>
+
+    </div>
+        <div class="settings">
+        <button class="settings-button" id="configButton">Configuración</button>
+    </div>
+    <div id="configMenu">
+        <h2>Menú de Configuración</h2>
+        <form id="configForm">
+            <ul>
+                <li>
+                    <input type="radio" id="facil" name="dificultad" value=0>
+                    <label for="facil">Fácil</label>
+                </li>
+                <li>
+                    <input type="radio" id="medio" name="dificultad" value=1>
+                    <label for="medio">Medio</label>
+                </li>
+                <li>
+                    <input type="radio" id="dificil" name="dificultad" value=2>
+                    <label for="dificil">Difícil</label>
+                </li>
+                <li>
+                    <input type="radio" id="todas" name="dificultad" value=3>
+                    <label for="todas">Todas</label>
+                </li>
+                <div id="spin_the_wheel">
+                    <canvas id="wheel" width="800" height="800"></canvas>
+                    <div id="spin">SPIN</div>
+                </div>
+            </ul>
+            
+            <button type="submit" id="closeButton">Cerrar</button>
+        </form>
     </div>
 
 </div>
-<script src="~/js/ruleta.js" asp-append-version="true"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+<script defer src="src/index.js"></script>
+<script  src="~/js/ruleta.js" asp-append-version="true"></script>
+<script  src="~/js/site.js" asp-append-version="true"></script>
 

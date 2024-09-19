@@ -35,20 +35,20 @@ public class BD
             {
                 if(categoria == -1)
                 {
-                    sql = "SELECT * FROM Preguntas";
+                    sql = "SELECT * FROM Preguntas ORDER BY NEWID()";
                 }
                 else
                 {
-                    sql = "SELECT * FROM Preguntas WHERE IdCategoria = categoria";
+                    sql = "SELECT * FROM Preguntas WHERE IdCategoria = categoria ORDER BY NEWID()";
                 }
             }
             else if (categoria == -1)
             {
-                sql = "SELECT * FROM Preguntas WHERE IdDificultad = dificultad";
+                sql = "SELECT * FROM Preguntas WHERE IdDificultad = dificultad ORDER BY NEWID()";
             }
             else
             {
-                sql = "SELECT * FROM Preguntas WHERE IdCategoria = categoria and IdDificultad = dificultad";
+                sql = "SELECT * FROM Preguntas WHERE IdCategoria = categoria AND IdDificultad = dificultad ORDER BY NEWID()";
             }
              _ListadoPreguntas = db.Query<Pregunta>(sql, new {dificultad = dificultad, categoria = categoria}).ToList();
         }

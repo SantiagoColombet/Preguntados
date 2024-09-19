@@ -37,11 +37,13 @@ public class HomeController : Controller
             
     }
 
-    public IActionResult Comenzar(string username, int dificultad)
+
+
+    public IActionResult Comenzar(string username, int dificultad, int categoria = -1 )
     {
         Juegos.CargarPartida(username, dificultad, -1);
 
-        if (Juegos.preguntas != null)
+        if (Juegos.preguntas != null && categoria == -1)
         {
             return RedirectToAction("Jugar");
         }
@@ -49,6 +51,43 @@ public class HomeController : Controller
         {
             return RedirectToAction("ConfigurarJuego");
         }
+    }
+
+    public IActionResult Ruleta(string categoria_)
+    {
+            int id_ = 0;
+
+        switch (categoria_)
+        {
+            case "Tecnologia":
+                id_ = 1;
+                break;
+            case "Geografia":
+                id_ = 2;
+                break;
+            case "Argentina":
+                id_ = 3;
+                break;
+            case "Cultura General":
+                id_ = 4;
+                break;
+            case "Deportes":
+                id_ = 5;
+                break;
+            case "Ciencias":
+                id_ = 6;
+                break;
+            default:
+                id_ = -1;
+                break;
+        }
+        ViewBag.id = id_;
+        return View("Index");
+    }
+    public IActionResult Dificultad (int dificultad_)
+    {
+        ViewBag.dificultad = dificultad_;
+        return View("Index");
     }
 
     public IActionResult Jugar()    
@@ -69,6 +108,7 @@ public class HomeController : Controller
         }
         
     }
+
     public IActionResult Privacy()
     {
         return View();

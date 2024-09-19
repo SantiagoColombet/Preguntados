@@ -23,19 +23,23 @@
 </div>
 <div id="configMenu">
     <h2>Menú de Configuración</h2>
-    <form id="configForm">
+    <form id="configForm" method='@Url.Action("Dificultad", "Home")'>
         <ul>
             <li>
-                <input type="radio" id="facil" name="dificultad" value="facil">
+                <input type="radio" id="facil" name="dificultad" value=0>
                 <label for="facil">Fácil</label>
             </li>
             <li>
-                <input type="radio" id="medio" name="dificultad" value="medio">
+                <input type="radio" id="medio" name="dificultad" value=1>
                 <label for="medio">Medio</label>
             </li>
             <li>
-                <input type="radio" id="dificil" name="dificultad" value="dificil">
+                <input type="radio" id="dificil" name="dificultad" value=2>
                 <label for="dificil">Difícil</label>
+            </li>
+            <li>
+                <input type="radio" id="todas" name="dificultad" value=3>
+                <label for="todas">Todas</label>
             </li>
         </ul>
         <button type="submit" id="closeButton">Cerrar</button>
