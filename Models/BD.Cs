@@ -3,7 +3,7 @@ using Dapper;
 
 public class BD
 {
-    private static string _connectionString = @"Server=localhost; DataBase=0;Trusted_Connection=True;";
+    private static string _connectionString = @"Server=localhost\SQLEXPRESS; DataBase=PregunadOrt; Trusted_Connection=True;";
     private static List<Categoria> _ListadoCategorias = new List<Categoria>();
     private static List<Dificultades> _ListadoDificultades = new List<Dificultades>();
     private static List<Pregunta> _ListadoPreguntas = new List<Pregunta>();
@@ -61,7 +61,7 @@ public class BD
         {
             foreach(Pregunta pregunta in ListaPreguntas)
             {
-                string sql = "SELECT * FROM Respuestas WHERE IdPregunta = @pIdPregunta";
+                string sql = "SELECT * FROM Respuestas WHERE IdPregunta = @pIdPregunta ORDER BY NEWID()";
                 listaRespuesta = db.Query<Respuestas>(sql, new { pIdPregunta = pregunta.IdPregunta }).ToList();
                 _ListadoRespuestas.AddRange(listaRespuesta);
             }

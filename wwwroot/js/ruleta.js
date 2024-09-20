@@ -105,15 +105,10 @@ function init() {
 
 init();
 
-events.addListener("spinEnd", (sector) => {
-  console.log(`Woop! You won ${sector.label}`);
-  
-});
 let categoria = null; // Variable para guardar el valor del último giro
 
 events.addListener("spinEnd", (sector) => {
   categoria = sector.label; 
-  $("#nombrecategoria").val(categoria);
-  $("#configButton").show();
   console.log(`El valor guardado es: ${categoria}`);
+  window.location.href = `/Home/Comenzar?nombrecategoria=${(categoria)}`;
 });

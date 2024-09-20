@@ -6,6 +6,8 @@ public class Juegos
     static public List<Pregunta> preguntas {get; set;}
     static public List<Respuestas> respuestas {get; set;}
 
+    static public int dificultad {get; set;}
+
 
     public static void InicializarJuego()
     {
@@ -23,7 +25,7 @@ public class Juegos
         List<Dificultades> ListaD = BD.ObtenerDificultades();
         return ListaD;
     }
-    public static void CargarPartida(string username, int dificultad, int categoria)
+    public static void CargarPartida( int dificultad, int categoria)
     {
         Juegos.preguntas = BD.ObtenerPreguntas(dificultad, categoria);
         Juegos.respuestas = BD.ObtenerRespuestas(preguntas);    

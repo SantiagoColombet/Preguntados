@@ -37,29 +37,38 @@ public class HomeController : Controller
             
     }
 
+    public IActionResult Datos()
+    {
+        return View();
+    }
 
+    public IActionResult RecibirDatos(int dificultad, string nombreUsuario)
+    {
+        Usuario usuario = new Usuario(nombreUsuario);
+        Juegos.dificultad = dificultad;
+        return View("Juego");
+    }
 
-    public IActionResult Comenzar(string username, int dificultad, string nombrecategoria)
+    public IActionResult Comenzar(string nombrecategoria)
     {
         
-        /*con el nombrecategoria setear categoria como int */   
-        int categoria = -1;
+        int categoria = Ruleta(nombrecategoria);
 
-        Juegos.CargarPartida(username, dificultad, -1);
+        Juegos.CargarPartida(Juegos.dificultad, -1);
 
         if (Juegos.preguntas != null && categoria == -1)
         {
-            return RedirectToAction("Jugar");
+            return RedirectToAction("Preguntas");
         }
         else
         {
-            return RedirectToAction("ConfigurarJuego");
+            return RedirectToAction("Index");
         }
     }
 
-    public IActionResult Ruleta(string categoria_)
+    private int Ruleta(string categoria_)
     {
-            int id_ = 0;
+            int id_;
 
         switch (categoria_)
         {
@@ -85,15 +94,8 @@ public class HomeController : Controller
                 id_ = -1;
                 break;
         }
-        ViewBag.id = id_;
-        return View("Index");
+        return id_;
     }
-    public IActionResult Dificultad (int dificultad_)
-    {
-        ViewBag.dificultad = dificultad_;
-        return View("Index");
-    }
-
     public IActionResult Jugar()    
     {
         Pregunta proximaPregunta = Juegos.ObtenerProximaPregunta();

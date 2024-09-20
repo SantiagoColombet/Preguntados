@@ -1,0 +1,49 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+<div class="area" >
+
+
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+
+   <div class="login-container">
+        <form class="login-form" action='@Url.Action("RecibirDatos", "Home")' method="post">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" name="nombreUsuario" placeholder="Nombre de usuario" required> <!-- Cambié 'username' a 'nombreUsuario' -->
+            
+            <div class="settings">
+                <h2>Dificultad</h2>
+                <div class="difficulty-options">
+                    <div class="difficulty-option">
+                        <input type="radio" id="facil" name="dificultad" value="0">
+                        <label for="facil">Fácil</label>
+                    </div>
+                    <div class="difficulty-option">
+                        <input type="radio" id="medio" name="dificultad" value="1">
+                        <label for="medio">Medio</label>
+                    </div>
+                    <div class="difficulty-option">
+                        <input type="radio" id="dificil" name="dificultad" value="2">
+                        <label for="dificil">Difícil</label>
+                    </div>
+                    <div class="difficulty-option">
+                        <input type="radio" id="todas" checked name="dificultad" value="-1">
+                        <label for="todas">Todas</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+</div>  
