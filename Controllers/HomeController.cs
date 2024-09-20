@@ -46,7 +46,7 @@ public class HomeController : Controller
     {
         Usuario usuario = new Usuario(nombreUsuario);
         Juegos.dificultad = dificultad;
-        return View("Juego");
+        return View("Preguntas");
     }
 
     public IActionResult Comenzar(string nombrecategoria)

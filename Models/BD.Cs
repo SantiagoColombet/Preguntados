@@ -3,7 +3,7 @@ using Dapper;
 
 public class BD
 {
-    private static string _connectionString = @"Server=localhost\SQLEXPRESS; DataBase=PregunadOrt; Trusted_Connection=True;";
+    private static string _connectionString = @"Server=localhost; DataBase=PreguntadOrt; Trusted_Connection=True;";
     private static List<Categoria> _ListadoCategorias = new List<Categoria>();
     private static List<Dificultades> _ListadoDificultades = new List<Dificultades>();
     private static List<Pregunta> _ListadoPreguntas = new List<Pregunta>();
@@ -39,16 +39,16 @@ public class BD
                 }
                 else
                 {
-                    sql = "SELECT * FROM Preguntas WHERE IdCategoria = categoria ORDER BY NEWID()";
+                    sql = "SELECT * FROM Preguntas WHERE IdCategoria = @categoria ORDER BY NEWID()";
                 }
             }
             else if (categoria == -1)
             {
-                sql = "SELECT * FROM Preguntas WHERE IdDificultad = dificultad ORDER BY NEWID()";
+                sql = "SELECT * FROM Preguntas WHERE IdDificultad = @dificultad ORDER BY NEWID()";
             }
             else
             {
-                sql = "SELECT * FROM Preguntas WHERE IdCategoria = categoria AND IdDificultad = dificultad ORDER BY NEWID()";
+                sql = "SELECT * FROM Preguntas WHERE IdCategoria = @categoria AND IdDificultad = @dificultad ORDER BY NEWID()";
             }
              _ListadoPreguntas = db.Query<Pregunta>(sql, new {dificultad = dificultad, categoria = categoria}).ToList();
         }
