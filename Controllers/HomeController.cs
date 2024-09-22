@@ -33,7 +33,7 @@ public class HomeController : Controller
         ViewBag.respuestaCorrecta = Juegos.ObtenerProximasRespuestas(idPregunta);
         ViewBag.esCorrecta = Juegos.VerificarRespuesta(idPregunta, idRespuesta);
 
-        return View("Respuesta");
+        return View("preguntas");
     }
 
     public IActionResult Datos()
@@ -77,19 +77,19 @@ public class HomeController : Controller
 
         switch (categoria_)
         {
-            case "Tecnologia":
+            case "Deportes":
                 id_ = 1;
                 break;
-            case "Geografia":
+            case "Tecnologia":
                 id_ = 2;
                 break;
-            case "Argentina":
+            case "Geografia":
                 id_ = 3;
                 break;
             case "Cultura General":
                 id_ = 4;
                 break;
-            case "Deportes":
+            case "Argentina":
                 id_ = 5;
                 break;
             case "Ciencias":

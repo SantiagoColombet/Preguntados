@@ -1,10 +1,10 @@
 const sectors = [
-  { id: 1, color: "#0FA3B1", text: "#333333", label: "Tecnologia" },
-  { id: 2, color: "#632B30", text: "#333333", label: "Geografia" },
-  { id: 3, color: "#B5E2FA", text: "#333333", label: "Argentina" },
-  { id: 4, color: "#EDDEA4", text: "#333333", label: "Cultura General" },
-  { id: 5, color: "#F7A072", text: "#333333", label: "Deportes" },
-  { id: 6, color: "#FF5A10", text: "#333333", label: "Ciencias" }
+  { color: "#0FA3B1", text: "#333333", label: "Tecnologia" },
+  { color: "#632B30", text: "#333333", label: "Geografia" },
+  { color: "#B5E2FA", text: "#333333", label: "Argentina" },
+  { color: "#EDDEA4", text: "#333333", label: "Cultura General" },
+  { color: "#F7A072", text: "#333333", label: "Deportes" },
+  { color: "#FF5A10", text: "#333333", label: "Ciencias" }
 ];
 const events = {
   listeners: {},
