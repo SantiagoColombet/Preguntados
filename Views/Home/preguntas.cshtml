@@ -1,15 +1,30 @@
+<div class="area" >
 
-<div class="question-container">
-    <div class="question-box">
-        <h2>@Model.Preguntas.Enunciado</h2>
-    </div>
 
-    <div class="answers-container">
-        @foreach (string respuesta in Respuestas.Opcion)
-        {
-            <div class="answer-box">
-                <p>@Respuestas.Opcion</p>
-            </div>
-        }
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+    <div class="quiz-container">
+        <div class="header">
+            <div class="category">@ViewBag.Categorias</div>
+            <div class="score">Puntaje: @ViewBag.PuntajeActual</div>
+        </div>
+        <div class="question">@ViewBag.pregunta.Enunciado</div>
+        <ul class="answers">
+            @foreach (var respuesta in ViewBag.respuestas)
+            {
+                <li><button class="answer" id="respuesta.Correcta">@respuesta.Contenido</button></li>
+            }
+        </ul>
+        <div class="username">Usuario: @ViewBag.Username</div>
     </div>
 </div>

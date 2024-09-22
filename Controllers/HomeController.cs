@@ -34,7 +34,6 @@ public class HomeController : Controller
         ViewBag.esCorrecta = Juegos.VerificarRespuesta(idPregunta, idRespuesta);
 
         return View("Respuesta");
-            
     }
 
     public IActionResult Datos()
@@ -44,9 +43,9 @@ public class HomeController : Controller
 
     public IActionResult RecibirDatos(int dificultad, string nombreUsuario)
     {
-        Usuario usuario = new Usuario(nombreUsuario);
+        Juegos.username = nombreUsuario;
         Juegos.dificultad = dificultad;
-        return View("Preguntas");
+        return View("Juego");
     }
 
     public IActionResult Comenzar(string nombrecategoria)
@@ -54,11 +53,17 @@ public class HomeController : Controller
         
         int categoria = Ruleta(nombrecategoria);
 
-        Juegos.CargarPartida(Juegos.dificultad, -1);
-
-        if (Juegos.preguntas != null && categoria == -1)
+        Juegos.CargarPartida(Juegos.dificultad, categoria);
+        Pregunta p = Juegos.ObtenerProximaPregunta();
+        List<Respuestas> r = Juegos.ObtenerProximasRespuestas(p.IdPregunta);
+        if (Juegos.preguntas != null)
         {
-            return RedirectToAction("Preguntas");
+            ViewBag.pregunta = p;
+            ViewBag.respuestas = r;
+            ViewBag.Categorias = nombrecategoria;
+            ViewBag.Username = Juegos.username;
+            ViewBag.PuntajeActual = Juegos.puntajeActual;
+            return View("preguntas");
         }
         else
         {
@@ -100,7 +105,6 @@ public class HomeController : Controller
     {
         Pregunta proximaPregunta = Juegos.ObtenerProximaPregunta();
 
-        return View("Juego");
         if (proximaPregunta == null)
         {
             return View("Fin");
@@ -112,7 +116,6 @@ public class HomeController : Controller
 
             return View("Juego");
         }
-        
     }
 
     public IActionResult Privacy()

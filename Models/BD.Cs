@@ -3,11 +3,9 @@ using Dapper;
 
 public class BD
 {
-    private static string _connectionString = @"Server=localhost; DataBase=PreguntadOrt; Trusted_Connection=True;";
+    private static string _connectionString = @"Server=localhost\SQLEXPRESS; DataBase=PreguntadOrt; Trusted_Connection=True;";
     private static List<Categoria> _ListadoCategorias = new List<Categoria>();
     private static List<Dificultades> _ListadoDificultades = new List<Dificultades>();
-    private static List<Pregunta> _ListadoPreguntas = new List<Pregunta>();
-    private static List<Respuestas> _ListadoRespuestas = new List<Respuestas>();
     public static List<Categoria> ObtenerCategorias()
     {
         using(SqlConnection db = new SqlConnection(_connectionString))
@@ -28,6 +26,7 @@ public class BD
     }
     public static List<Pregunta> ObtenerPreguntas(int dificultad, int categoria)
     {
+        List<Pregunta> _ListadoPreguntas = new List<Pregunta>(); 
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
             string sql = "";
@@ -56,6 +55,7 @@ public class BD
     }
     public static List<Respuestas> ObtenerRespuestas(List<Pregunta> ListaPreguntas)
     {
+        List<Respuestas> _ListadoRespuestas = new List<Respuestas>(); 
         List<Respuestas> listaRespuesta = new List<Respuestas>();
         using (SqlConnection db = new SqlConnection(_connectionString))
         {
