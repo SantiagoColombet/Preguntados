@@ -33,9 +33,13 @@ public class HomeController : Controller
         ViewBag.respuestaCorrecta = Juegos.ObtenerProximasRespuestas(idPregunta);
         ViewBag.esCorrecta = Juegos.VerificarRespuesta(idPregunta, idRespuesta);
 
-        return View("preguntas");
+        return View("respuesta");
     }
 
+    public IActionResult respuesta()
+    {
+        return View();
+    }
     public IActionResult Datos()
     {
         return View();

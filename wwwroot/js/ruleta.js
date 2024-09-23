@@ -31,9 +31,9 @@ const PI = Math.PI;
 const TAU = 2 * PI;
 const arc = TAU / sectors.length;
 
-const friction = 0.991; // 0.995=soft, 0.99=mid, 0.98=hard
-let angVel = 0; // Angular velocity
-let ang = 0; // Angle in radians
+const friction = 0.991; 
+let angVel = 0; 
+let ang = 0; 
 
 let spinButtonClicked = false;
 
@@ -43,7 +43,7 @@ function drawSector(sector, i) {
   const ang = arc * i;
   ctx.save();
 
-  // COLOR
+
   ctx.beginPath();
   ctx.fillStyle = sector.color;
   ctx.moveTo(rad, rad);
@@ -51,14 +51,13 @@ function drawSector(sector, i) {
   ctx.lineTo(rad, rad);
   ctx.fill();
 
-  // TEXT
   ctx.translate(rad, rad);
   ctx.rotate(ang + arc / 2);
   ctx.textAlign = "right";
   ctx.fillStyle = sector.text;
   ctx.font = "bold 30px 'Lato', sans-serif";
   ctx.fillText(sector.label, rad - 10, 10);
-  //
+
 
   ctx.restore();
 }
@@ -73,18 +72,18 @@ function rotate() {
 }
 
 function frame() {
-  // Fire an event after the wheel has stopped spinning
+  
   if (!angVel && spinButtonClicked) {
     const finalSector = sectors[getIndex()];
     events.fire("spinEnd", finalSector);
-    spinButtonClicked = false; // reset the flag
+    spinButtonClicked = false;
     return;
   }
 
-  angVel *= friction; // Decrement velocity by friction
-  if (angVel < 0.002) angVel = 0; // Bring to stop
-  ang += angVel; // Update angle
-  ang %= TAU; // Normalize angle
+  angVel *= friction;
+  if (angVel < 0.002) angVel = 0; 
+  ang += angVel; 
+  ang %= TAU;
   rotate();
 }
 
@@ -95,8 +94,8 @@ function engine() {
 
 function init() {
   sectors.forEach(drawSector);
-  rotate(); // Initial rotation
-  engine(); // Start engine
+  rotate();
+  engine(); 
   spinEl.addEventListener("click", () => {
     if (!angVel) angVel = rand(0.25, 0.45);
     spinButtonClicked = true;
@@ -105,7 +104,7 @@ function init() {
 
 init();
 
-let categoria = null; // Variable para guardar el valor del último giro
+let categoria = null; 
 
 events.addListener("spinEnd", (sector) => {
   categoria = sector.label; 
