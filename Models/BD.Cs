@@ -6,6 +6,25 @@ public class BD
     private static string _connectionString = @"Server=localhost\SQLEXPRESS; DataBase=PreguntadOrt; Trusted_Connection=True;";
     private static List<Categoria> _ListadoCategorias = new List<Categoria>();
     private static List<Dificultades> _ListadoDificultades = new List<Dificultades>();
+
+    public static void IngresarUsuario(string nombre, int puntos)
+    {
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "INSERT INTO Usuarios (Nombre, Puntos) VALUES (@Nombre, @Puntos)";
+            db.Execute(sql,  new { Nombre = nombre, Puntos = puntos });
+        }
+    }   
+    public static List<Usuario> TraerUsuarios()
+    {
+        List<Usuario> ListaUsuarios = new List<Usuario>(); 
+            using(SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SELECT * FROM Usuarios ORDER BY puntos DESC";
+            ListaUsuarios = db.Query<Usuario>(sql).ToList();
+        }
+        return ListaUsuarios;
+    }
     public static List<Categoria> ObtenerCategorias()
     {
         using(SqlConnection db = new SqlConnection(_connectionString))

@@ -1,0 +1,42 @@
+<div class="area" >
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+    <div class="leaderboard-card">
+        <h1 class="leaderboard-header">User Ranking</h1>
+        <table>
+        <thead>
+            <tr>
+            <th>Rank</th>
+            <th>Usuario</th>
+            <th>Puntos</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.usuarios != null)
+            {
+                int rank = 1;
+                foreach (var usuario in ViewBag.usuarios)
+                {
+                    var rowClass =1; 
+                    <tr class="@rowClass">
+                        <td class="rank">@rank</td>
+                        <td class="username">@usuario.nombre</td>
+                        <td class="points">@usuario.puntos</td>
+                    </tr>
+                    rank++;
+                }
+            }
+        </tbody>
+        </table>
+    </div>
+</div>

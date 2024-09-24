@@ -21,7 +21,7 @@ public class HomeController : Controller
     public void ConfigurarJuego()
     {
         Juegos.InicializarJuego();
-
+        
         ViewBag.Categorias = Juegos.ObtenerCategorias();
         ViewBag.Dificultades = Juegos.ObtenerDificultades();
     }
@@ -30,17 +30,40 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
     {
-        ViewBag.respuestaCorrecta = Juegos.ObtenerProximasRespuestas(idPregunta);
         ViewBag.esCorrecta = Juegos.VerificarRespuesta(idPregunta, idRespuesta);
-
-        return View("respuesta");
+        Pregunta p = Juegos.ObtenerProximaPregunta();
+        if (p != null)
+        {
+            List<Respuestas> r = Juegos.ObtenerProximasRespuestas(p.IdPregunta);
+            ViewBag.pregunta = p;
+            ViewBag.respuestas = r;
+            ViewBag.Categorias = Juegos.Categoria;
+            ViewBag.Username = Juegos.username;
+            ViewBag.PuntajeActual = Juegos.puntajeActual;
+            return View("preguntas");
+        }
+        return View("final");
     }
+
+    public IActionResult FinJuego()
+    {
+        BD.IngresarUsuario(Juegos.username, Juegos.puntajeActual);
+        List<Usuario> ListaUsuarios = BD.TraerUsuarios();
+        ViewBag.usuarios = ListaUsuarios;
+        return View("ranking");
+    }
+
+    public IActionResult ContinuarJuego()
+    {
+        return View("Juego");
+    }
+
 
     public IActionResult respuesta()
     {
         return View();
     }
-    public IActionResult Datos()
+    public IActionResult Datos()    
     {
         return View();
     }
@@ -56,6 +79,7 @@ public class HomeController : Controller
     {
         
         int categoria = Ruleta(nombrecategoria);
+        Juegos.Categoria = nombrecategoria;
 
         Juegos.CargarPartida(Juegos.dificultad, categoria);
         Pregunta p = Juegos.ObtenerProximaPregunta();
@@ -90,7 +114,7 @@ public class HomeController : Controller
             case "Geografia":
                 id_ = 3;
                 break;
-            case "Cultura General":
+            case "Cultura":
                 id_ = 4;
                 break;
             case "Argentina":

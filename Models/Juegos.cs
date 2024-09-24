@@ -1,9 +1,14 @@
 public class Juegos
 {
     static public string username {get; set;}
+
     static public int puntajeActual {get; set;}
+
     static public List<Pregunta> preguntas {get; set;}
+
     static public List<Respuestas> respuestas {get; set;}
+
+    static public string Categoria {get; set;}
 
     static public int dificultad {get; set;}
 
@@ -30,8 +35,11 @@ public class Juegos
     }
     public static Pregunta ObtenerProximaPregunta()
     {
-        Pregunta pregunta;
-        pregunta = preguntas[0];
+        Pregunta pregunta = null;
+        if(preguntas.Count()>0)
+        {
+            pregunta = preguntas[0];
+        }
         return pregunta;
     }
 
@@ -50,11 +58,22 @@ public class Juegos
     public static bool VerificarRespuesta(int idPregunta, int idRespuesta)
     {
         bool esCorrecta = false;
-        preguntas.RemoveAt(0);
-        if (idPregunta == idRespuesta)
+
+        foreach (Respuestas respuesta in Juegos.respuestas)
         {
-            esCorrecta = true;
-            Juegos.puntajeActual += 100; 
+            if (respuesta.IdRespuesta == idRespuesta)
+            {
+                if (respuesta.Correcta)
+                {
+                    esCorrecta = true;
+                    Juegos.puntajeActual += 100; 
+                }
+                break;
+            }
+        }
+        if(preguntas != null)
+        {
+            preguntas.RemoveAt(0);
         }
         return esCorrecta;
     }

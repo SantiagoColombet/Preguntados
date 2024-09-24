@@ -2,7 +2,7 @@ const sectors = [
   { color: "#0FA3B1", text: "#333333", label: "Tecnologia" },
   { color: "#632B30", text: "#333333", label: "Geografia" },
   { color: "#B5E2FA", text: "#333333", label: "Argentina" },
-  { color: "#EDDEA4", text: "#333333", label: "Cultura General" },
+  { color: "#EDDEA4", text: "#333333", label: "Cultura" },
   { color: "#F7A072", text: "#333333", label: "Deportes" },
   { color: "#FF5A10", text: "#333333", label: "Ciencias" }
 ];
