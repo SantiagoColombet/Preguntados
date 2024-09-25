@@ -3,7 +3,7 @@ using Dapper;
 
 public class BD
 {
-    private static string _connectionString = @"Server=localhost\SQLEXPRESS; DataBase=PreguntadOrt; Trusted_Connection=True;";
+    private static string _connectionString = @"Server=localhost; DataBase=PreguntadOrt; Trusted_Connection=True;";
     private static List<Categoria> _ListadoCategorias = new List<Categoria>();
     private static List<Dificultades> _ListadoDificultades = new List<Dificultades>();
 

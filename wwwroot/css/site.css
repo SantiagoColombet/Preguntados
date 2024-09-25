@@ -58,6 +58,12 @@ input[type="radio"] {
   margin-right: 10px;
 }
 
+.contenedorCreditos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 /* --------------------------------------- JUGAR --------------------------------------- */
 
