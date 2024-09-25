@@ -1,19 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const forms = document.querySelectorAll('.respuestas');
     forms.forEach(form => {
         form.addEventListener('submit', function (event) {
-            event.preventDefault();  // Evita el envío inmediato del formulario
-
-            const isCorrect = form.classList.contains('res_option_True');  
+            event.preventDefault();
+            const isCorrect = form.classList.contains('res_option_True');
+            const submitButton = form.querySelector('input[type="submit"]');
 
             if (isCorrect) {
-                form.querySelector('input[type="submit"]').classList.add('correct-answer');  
+                submitButton.classList.add('correct-answer');
             } else {
-                form.querySelector('input[type="submit"]').classList.add('incorrect-answer');
+                submitButton.classList.add('incorrect-answer');
+                
+                setTimeout(() => {
+                    const correctForm = document.querySelector('.res_option_True');
+                    if (correctForm) {
+                        correctForm.querySelector('input[type="submit"]').classList.add('correct-answer');
+                    }
+                }, 1000);
             }
-
             setTimeout(() => {
-                form.submit();  
-            }, 1000);
+                form.submit();
+            }, 2000);
         });
     });
 });

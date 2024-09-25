@@ -107,7 +107,8 @@ init();
 let categoria = null; 
 
 events.addListener("spinEnd", (sector) => {
-  categoria = sector.label; 
-  console.log(`El valor guardado es: ${categoria}`);
-  window.location.href = `/Home/Comenzar?nombrecategoria=${(categoria)}`;
+  categoria = sector.label;
+  setTimeout(() => {
+    window.location.href = `/Home/Comenzar?nombrecategoria=${(categoria)}`;
+  }, 500);
 });

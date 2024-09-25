@@ -429,6 +429,12 @@ input[type="radio"] {
   color: white;
 }
 
+.correct-answer-highlight {
+  background-color: lightgreen;
+  color: white;
+  border: 2px solid yellow;  
+  transition: all 0.5s ease;  
+}
 
 /*                        RANKING                               */
 
